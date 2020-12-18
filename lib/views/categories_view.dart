@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../dummy_data.dart';
 import 'package:meals_and_recipes/widgets/category.dart';
 
+//this is the UI for the Categories page view
+
 class CategoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

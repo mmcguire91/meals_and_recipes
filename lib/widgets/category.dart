@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//Class Category holds the UI for each Category UI element
+
 class Category extends StatelessWidget {
   const Category({@required this.title, this.color});
 
