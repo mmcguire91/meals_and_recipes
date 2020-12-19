@@ -26,6 +26,7 @@ class CategoriesView extends StatelessWidget {
               (catData) => Category(
                 title: catData.title,
                 color: catData.color,
+                // Navigator.of(context) =>
               ),
             )
             .toList(),
