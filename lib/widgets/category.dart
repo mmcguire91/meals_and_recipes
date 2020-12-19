@@ -11,7 +11,10 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(title),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.headline6,
+      ),
       padding: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         gradient: LinearGradient(

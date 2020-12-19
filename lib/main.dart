@@ -11,6 +11,17 @@ class MyApp extends StatelessWidget {
       title: 'Meals and Recipes',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        accentColor: Colors.green,
+        canvasColor: Colors.grey[200],
+        fontFamily: 'Raleway',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: TextStyle(color: Colors.red),
+              bodyText2: TextStyle(color: Colors.blueGrey),
+              headline6: TextStyle(
+                fontSize: 20,
+                fontFamily: 'RobotoCondensed',
+              ),
+            ),
       ),
       home: CategoriesView(),
     );

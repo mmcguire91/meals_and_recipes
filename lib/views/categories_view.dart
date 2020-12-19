@@ -14,6 +14,7 @@ class CategoriesView extends StatelessWidget {
       ),
       body: GridView(
         //GridView is meant as a body element that contains minor UI components and data
+        padding: const EdgeInsets.all(20.0),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
