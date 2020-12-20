@@ -5,8 +5,9 @@ import '../views/category_meals_view.dart';
 //Class Category holds the UI for each Category UI element
 
 class Category extends StatelessWidget {
-  const Category({@required this.title, this.color});
+  const Category({this.id, @required this.title, this.color});
 
+  final String id;
   final String title;
   final Color color;
 
@@ -14,19 +15,23 @@ class Category extends StatelessWidget {
     Navigator.of(ctx).push(
       MaterialPageRoute(
         builder: (_) {
-          return CategoryMealsView();
+          return CategoryMealsView(id, title);
         },
       ),
     );
   }
+  //establish navigator method that will direct user to the CategoryMealsView page
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       //gestureDetector substitute with UI ripple effect
       onTap: () => selectCategory(context),
+      //call the selectCategory method that calls the selectCategory Navigator method that navigates to a different view
       splashColor: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(25.0),
+      //color of the ripple effect
+      borderRadius: BorderRadius.circular(15.0),
+      //radius of the ripple effect => ensure this is the same as the container radius for ideal UI
       child: Container(
         child: Text(
           title,

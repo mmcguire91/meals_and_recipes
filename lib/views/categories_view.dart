@@ -24,9 +24,9 @@ class CategoriesView extends StatelessWidget {
         children: DUMMY_CATEGORIES
             .map(
               (catData) => Category(
+                id: catData.id,
                 title: catData.title,
                 color: catData.color,
-                // Navigator.of(context) =>
               ),
             )
             .toList(),
