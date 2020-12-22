@@ -12,18 +12,13 @@ class Category extends StatelessWidget {
   final Color color;
 
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed('/category-meals', arguments: {
-      'id': id,
-      'title': title,
-    }
-        // MaterialPageRoute(
-        //   builder: (_) {
-        //     return CategoryMealsView(id, title);
-        //     //pass over id and title data
-        //   },
-        // ),
-        //this would be the convention to execute a navigator method via non-named routes
-        );
+    Navigator.of(ctx).pushNamed(
+      CategoryMealsView.routeName,
+      arguments: {
+        'id': id,
+        'title': title,
+      },
+    );
   }
   //establish named route navigator method that will direct user to the CategoryMealsView page
   //arguments pass over data for id and title

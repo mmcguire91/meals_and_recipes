@@ -25,9 +25,14 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesView(),
+      // home: CategoriesView(),
+      initialRoute:
+          '/', //default is '/'. this is if you want to start at a different view other than home
       routes: {
-        '/category-meals': (ctx) => CategoryMealsView(),
+        '/': (ctx) => CategoriesView(),
+        // '/' acts as home. If you are going to establish home under routes you must not define a property for home or comment it out
+        CategoryMealsView.routeName: (ctx) => CategoryMealsView(),
+        //updated naming convention path to reduce the chance of human error by mistyping a string
       },
     );
   }

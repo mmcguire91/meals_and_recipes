@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:meals_and_recipes/views/categories_view.dart';
 
 class CategoryMealsView extends StatelessWidget {
-  // CategoryMealsView(this.categoryID, this.categoryTitle);
-
-  // final String categoryID;
-  // final String categoryTitle;
-  //this would be required if you were trying to pass data through a non=-named route but since we are refactoring our code to named routes this is no longer necessary
+  static const routeName = '/category-meals';
+  //etablishes naming convention so that you can more easily reference the route
 
   @override
   Widget build(BuildContext context) {
