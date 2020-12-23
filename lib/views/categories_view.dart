@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../dummy_data.dart';
+import '../models/dummy_data.dart';
 import 'package:meals_and_recipes/widgets/category.dart';
 
 //this is the UI for the Categories page view

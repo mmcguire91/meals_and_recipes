@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
             ),
       ),
       // home: CategoriesView(),
-      initialRoute:
-          '/', //default is '/'. this is if you want to start at a different view other than home
+      initialRoute: '/',
+      //default is '/'. this is most relevantif you want to start at a different view other than home
       routes: {
         '/': (ctx) => CategoriesView(),
         // '/' acts as home. If you are going to establish home under routes you must not define a property for home or comment it out
