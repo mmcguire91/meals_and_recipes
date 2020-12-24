@@ -7,9 +7,10 @@ enum Complexity {
 }
 
 enum Cost {
-  Low,
-  Medium,
-  High,
+  //in course this is referred to as 'Affordability
+  Low, // affordable
+  Medium, // pricey
+  High, // luxurious
 }
 
 class Meal {
@@ -29,7 +30,7 @@ class Meal {
     @required this.isVegetarian,
   });
 
-  final int id;
+  final int id; //in course this value is datatype String
   final List<String> categories;
   final String title;
   final String imageUrl;
@@ -37,7 +38,7 @@ class Meal {
   final List<String> steps;
   final int duration;
   final Complexity complexity;
-  final Cost cost;
+  final Cost cost; //affordability
   final bool isGlutenFree;
   final bool isLactoseFree;
   final bool isVegan;

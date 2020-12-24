@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_and_recipes/views/categories_view.dart';
+
+import '../models/dummy_data.dart';
 
 class CategoryMealsView extends StatelessWidget {
   static const routeName = '/category-meals';
@@ -9,9 +10,16 @@ class CategoryMealsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final routeArguments =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
+
     final categoryTitle = routeArguments['title'];
+
     final categoryID = routeArguments['id'];
     //establish route arguments to pass data over from one view to another via named routes
+
+    final categoryMeals = DUMMY_MEALS.where((meal) {
+      return meal.categories.contains(categoryID);
+    }).toList();
+    //logic to display which meals map to which particular category when a category is pressed
 
     return Scaffold(
       appBar: AppBar(
@@ -20,8 +28,11 @@ class CategoryMealsView extends StatelessWidget {
         ),
         //retrieve and display the applicable category title that was passed over via the selectCategory navigator method in category.dart
       ),
-      body: Center(
-        child: Text('text'),
+      body: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return Text(categoryMeals[index].title);
+        },
+        itemCount: categoryMeals.length,
       ),
     );
   }
