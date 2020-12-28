@@ -17,6 +17,40 @@ class Meal extends StatelessWidget {
   final Complexity complexity;
   final Cost cost;
 
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Easy:
+        return 'Easy';
+        break;
+      case Complexity.Moderate:
+        return 'Moderate';
+        break;
+      case Complexity.Difficult:
+        return 'Difficult';
+        break;
+      default:
+        return 'Undefined';
+    }
+  }
+//interpolating enums into string values
+
+  String get costText {
+    switch (cost) {
+      case Cost.Low:
+        return 'Low';
+        break;
+      case Cost.Medium:
+        return 'Medium';
+        break;
+      case Cost.High:
+        return 'High';
+        break;
+      default:
+        return 'Undefined';
+    }
+  }
+//interpolating enums into string values
+
   void selectMeal() {}
 
   @override
@@ -45,7 +79,75 @@ class Meal extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ), //ClipRRect wideget acts as container to format image according to the defined styling
+                Positioned(
+                  bottom: 20.0, //20 px from bottom
+                  right: 10.0, //10 px from right
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 20,
+                    ),
+                    width: 300,
+                    color: Colors.black54,
+                    child: Text(
+                      '$title',
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                      ),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
+                ),
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.schedule),
+                      SizedBox(width: 6.0),
+                      Text(
+                        '$duration mins',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.work),
+                      SizedBox(width: 6.0),
+                      Text(
+                        '$complexityText',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.attach_money),
+                      SizedBox(width: 6.0),
+                      Text(
+                        '$costText',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
