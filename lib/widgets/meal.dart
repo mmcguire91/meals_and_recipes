@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../models/meal_data_model.dart';
+import '../views/meal_detail_view.dart';
+
+//Class Meal holds the UI element and properties for each meal displayed on the category_meals_view
 
 class Meal extends StatelessWidget {
   Meal({
+    @required this.id,
     @required this.title,
     @required this.imageUrl,
     @required this.duration,
@@ -11,6 +15,7 @@ class Meal extends StatelessWidget {
     @required this.cost,
   });
 
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
@@ -51,12 +56,18 @@ class Meal extends StatelessWidget {
   }
 //interpolating enums into string values
 
-  void selectMeal() {}
+  void selectMeal(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MealDetailView.routeName,
+      arguments: id,
+    );
+  }
+  //navigator method to push to the MealDetailView
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),

@@ -32,6 +32,7 @@ class CategoryMealsView extends StatelessWidget {
       body: ListView.builder(
         itemBuilder: (ctx, index) {
           return Meal(
+            id: categoryMeals[index].id,
             title: categoryMeals[index].title,
             imageUrl: categoryMeals[index].imageUrl,
             duration: categoryMeals[index].duration,

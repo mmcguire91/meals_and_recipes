@@ -30,7 +30,8 @@ class Meal {
     @required this.isVegetarian,
   });
 
-  final int id; //in course this value is datatype String
+  final String
+      id; //had to modify from int to sting to account for parameter type in listview builder
   final List<String> categories;
   final String title;
   final String imageUrl;

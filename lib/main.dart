@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'views/categories_view.dart';
 import 'views/category_meals_view.dart';
+import 'views/meal_detail_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         // '/' acts as home. If you are going to establish home under routes you must not define a property for home or comment it out
         CategoryMealsView.routeName: (ctx) => CategoryMealsView(),
         //updated naming convention path to reduce the chance of human error by mistyping a string
+        MealDetailView.routeName: (ctx) => MealDetailView(),
       },
     );
   }

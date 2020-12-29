@@ -58,7 +58,7 @@ const DUMMY_CATEGORIES = const [
 
 const DUMMY_MEALS = const [
   Meal(
-    id: 1,
+    id: 'm1',
     categories: [
       'c1',
       'c2',
@@ -92,7 +92,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: true,
   ),
   Meal(
-    id: 2,
+    id: 'm2',
     categories: [
       'c2',
     ],
@@ -120,7 +120,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: false,
   ),
   Meal(
-    id: 3,
+    id: 'm3',
     categories: [
       'c2',
       'c3',
@@ -152,7 +152,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: true,
   ),
   Meal(
-    id: 4,
+    id: 'm4',
     categories: [
       'c4',
     ],
@@ -187,7 +187,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: false,
   ),
   Meal(
-    id: 5,
+    id: 'm5',
     categories: [
       'c2'
           'c5',
@@ -223,7 +223,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: true,
   ),
   Meal(
-    id: 6,
+    id: 'm6',
     categories: [
       'c6',
       'c10',
@@ -259,7 +259,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: false,
   ),
   Meal(
-    id: 7,
+    id: 'm7',
     categories: [
       'c7',
     ],
@@ -290,7 +290,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: false,
   ),
   Meal(
-    id: 8,
+    id: 'm8',
     categories: [
       'c8',
     ],
@@ -323,7 +323,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: true,
   ),
   Meal(
-    id: 9,
+    id: 'm9',
     categories: [
       'c9',
     ],
@@ -372,7 +372,7 @@ const DUMMY_MEALS = const [
     isLactoseFree: false,
   ),
   Meal(
-    id: 10,
+    id: 'm10',
     categories: [
       'c2',
       'c5',
