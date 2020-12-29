@@ -122,39 +122,21 @@ class Meal extends StatelessWidget {
                     children: <Widget>[
                       Icon(Icons.schedule),
                       SizedBox(width: 6.0),
-                      Text(
-                        '$duration mins',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                        ),
-                      ),
+                      Text('$duration mins'),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       Icon(Icons.work),
                       SizedBox(width: 6.0),
-                      Text(
-                        '$complexityText',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                        ),
-                      ),
+                      Text('$complexityText'),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       Icon(Icons.attach_money),
                       SizedBox(width: 6.0),
-                      Text(
-                        '$costText',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                        ),
-                      ),
+                      Text('$costText'),
                     ],
                   ),
                 ],
