@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
       title: 'Meals and Recipes',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        accentColor: Colors.green,
+        accentColor: Color(0xFF6ec6ff),
         canvasColor: Colors.grey[200],
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: TextStyle(color: Colors.red),
-              bodyText2: TextStyle(color: Colors.black, fontSize: 20.0),
+              bodyText2: TextStyle(color: Color(0xFF2B2B2B), fontSize: 20.0),
               headline6: TextStyle(
                 fontSize: 20,
                 fontFamily: 'RobotoCondensed',
