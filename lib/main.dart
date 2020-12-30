@@ -36,6 +36,13 @@ class MyApp extends StatelessWidget {
         //updated naming convention path to reduce the chance of human error by mistyping a string
         MealDetailView.routeName: (ctx) => MealDetailView(),
       },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (ctx) => CategoriesView(),
+        );
+      },
+      //onUnknownRoute operates much like a 404 error
+      //if the user were to click on an element that was not properly mapped, return user to xyz
     );
   }
 }
