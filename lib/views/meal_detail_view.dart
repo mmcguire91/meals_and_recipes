@@ -7,7 +7,7 @@ class MealDetailView extends StatelessWidget {
 
   Widget sectionTitle(BuildContext context, String text) {
     return Container(
-      margin: EdgeInsets.all(10.0),
+      margin: EdgeInsets.only(top: 5.0),
       child: Text(
         text,
         style: Theme.of(context).textTheme.headline6,
@@ -15,20 +15,6 @@ class MealDetailView extends StatelessWidget {
     );
   }
   //extracted widget of sectionTitle
-
-  Widget formattedContainer(Widget child) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xFF6ec6ff),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      //TODO: Refactor as MediaQuery
-      margin: EdgeInsets.all(10.0),
-      height: 250,
-      width: 350,
-      child: child,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +24,22 @@ class MealDetailView extends StatelessWidget {
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealID);
     //retrieve the properties associated with a meal according to the ID of the meal. Save to the variable selectedMeal
 
+    final mediaQuery = MediaQuery.of(context);
+
+    Widget formattedContainer(Widget child) {
+      return Container(
+        decoration: BoxDecoration(
+          color: Color(0xFF6ec6ff),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        margin: EdgeInsets.all(10.0),
+        height: mediaQuery.size.height * 0.3,
+        width: mediaQuery.size.width * 0.9,
+        child: child,
+      );
+    }
+    //extracted widget of formatted container
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${selectedMeal.title}'),
@@ -45,6 +47,7 @@ class MealDetailView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            //image
             Container(
               child: Image.network(
                 selectedMeal.imageUrl,
@@ -53,6 +56,7 @@ class MealDetailView extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+            //Table to display ingredients & steps
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -101,6 +105,7 @@ class MealDetailView extends StatelessWidget {
               'Ingredients',
             ),
             formattedContainer(
+              //Ingredients
               ListView.builder(
                 itemBuilder: (ctx, index) {
                   return Card(
@@ -123,6 +128,7 @@ class MealDetailView extends StatelessWidget {
               'Directions',
             ),
             formattedContainer(
+              //Directions / Steps
               ListView.builder(
                 itemBuilder: (ctx, index) {
                   return Column(
