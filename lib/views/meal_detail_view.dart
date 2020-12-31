@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../models/dummy_data.dart';
 
+//MealDetailView is the UI for the Meal Detail page
+
 class MealDetailView extends StatelessWidget {
   static const routeName = '/meal-detail';
 
