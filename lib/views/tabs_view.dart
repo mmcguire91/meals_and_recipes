@@ -14,11 +14,17 @@ class TabsView extends StatefulWidget {
 //resume video at 3:15
 
 class _TabsViewState extends State<TabsView> {
-  final List<Widget> _pages = [
-    CategoriesView(), //index = 0
-    Favorites(), //index = 1
+  final List<Map<String, Object>> _pages = [
+    {
+      'page': CategoriesView(),
+      'title': 'Categories',
+    }, //index = 0
+    {
+      'page': Favorites(),
+      'title': 'Favorites',
+    }, //index = 1
   ];
-  //assign a widget to the index the user selects within a new List variable _pages which holds <Widget>
+  //assign a widget to the index the user selects within a new List variable _pages which holds Map values of <String, Object> data types as indeces
   //ensure that the values defined here are tied to the order they appear in the items List of the BottomNavigationBar widget
 
   int _selectedPageIndex = 0;
@@ -36,10 +42,11 @@ class _TabsViewState extends State<TabsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meals'),
+        title: Text(_pages[_selectedPageIndex]['title']),
+        //set the title to the mapped value of the _selectedPageIndex which selects the index defined in the _pages List and display the value of the ['title'] for the selected index
       ),
-      body: _pages[_selectedPageIndex],
-      //set the body according to the index value of which the user selects
+      body: _pages[_selectedPageIndex]['page'],
+      //set the body according to the index value of which the user selects according to the ['page'] value of the selected Map index value
       bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPage,
           //onTap set the state of the _selectedPage Index to the value of the index the user selects
