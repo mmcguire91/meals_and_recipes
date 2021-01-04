@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../views/filters_view.dart';
+
 class HamburgerMenu extends StatelessWidget {
-  Widget hamburgerListTile(String title, IconData icon) {
+  Widget hamburgerListTile(String title, IconData icon, Function onTap) {
     return ListTile(
       leading: Icon(
         icon,
@@ -15,6 +17,7 @@ class HamburgerMenu extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
+      onTap: onTap,
     );
   }
   //listTile extracted to reduce reused code
@@ -40,13 +43,17 @@ class HamburgerMenu extends StatelessWidget {
           ),
         ),
         hamburgerListTile(
-          'Meals',
-          Icons.restaurant,
-        ),
+            'Meals', //title
+            Icons.restaurant, //icon
+            () {
+          Navigator.of(context).pushNamed('/'); //onTap
+        }),
         hamburgerListTile(
-          'Filter',
-          Icons.settings,
-        ),
+            'Filter', //title
+            Icons.settings, //icon
+            () {
+          Navigator.of(context).pushNamed(FiltersView.routeName); //onTap
+        }),
       ],
     ));
   }

@@ -4,6 +4,7 @@ import 'views/tabs_view.dart';
 import 'views/categories_view.dart';
 import 'views/category_meals_view.dart';
 import 'views/meal_detail_view.dart';
+import 'views/filters_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         CategoryMealsView.routeName: (ctx) => CategoryMealsView(),
         //updated naming convention path to reduce the chance of human error by mistyping a string
         MealDetailView.routeName: (ctx) => MealDetailView(),
+        FiltersView.routeName: (ctx) => FiltersView(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
