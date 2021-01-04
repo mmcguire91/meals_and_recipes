@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import './favorites.dart';
 import './categories_view.dart';
 
+import '../widgets/hamburger_menu.dart';
+
 //TabsView is the tab controller on the appbar
 
 class TabsView extends StatefulWidget {
@@ -10,8 +12,6 @@ class TabsView extends StatefulWidget {
   _TabsViewState createState() => _TabsViewState();
 }
 //electing to define statefulWidget because we want the page to update based on user interaction
-
-//resume video at 3:15
 
 class _TabsViewState extends State<TabsView> {
   final List<Map<String, Object>> _pages = [
@@ -45,6 +45,7 @@ class _TabsViewState extends State<TabsView> {
         title: Text(_pages[_selectedPageIndex]['title']),
         //set the title to the mapped value of the _selectedPageIndex which selects the index defined in the _pages List and display the value of the ['title'] for the selected index
       ),
+      drawer: HamburgerMenu(),
       body: _pages[_selectedPageIndex]['page'],
       //set the body according to the index value of which the user selects according to the ['page'] value of the selected Map index value
       bottomNavigationBar: BottomNavigationBar(
