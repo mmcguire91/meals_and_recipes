@@ -43,17 +43,21 @@ class HamburgerMenu extends StatelessWidget {
           ),
         ),
         hamburgerListTile(
-            'Meals', //title
-            Icons.restaurant, //icon
-            () {
-          Navigator.of(context).pushNamed('/'); //onTap
-        }),
+          'Meals', //title
+          Icons.restaurant, //icon
+          () {
+            //onTap
+            Navigator.of(context).pushReplacementNamed('/');
+          },
+        ),
         hamburgerListTile(
-            'Filter', //title
-            Icons.settings, //icon
-            () {
-          Navigator.of(context).pushNamed(FiltersView.routeName); //onTap
-        }),
+          'Filter', //title
+          Icons.settings, //icon
+          () {
+            //onTap
+            Navigator.of(context).pushReplacementNamed(FiltersView.routeName);
+          },
+        ),
       ],
     ));
   }
