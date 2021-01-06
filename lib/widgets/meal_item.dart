@@ -70,9 +70,10 @@ class MealItem extends StatelessWidget {
           removeItem(result);
         }
       },
-      //.then executes a function when you do the inverse of the defined navigator function
-      //i.e. you performed a navigator.push here so the inverse is when you navigator.pop()
     );
+    //.then executes a function when you do the inverse of the defined navigator function
+    //i.e. you performed a navigator.push here so the inverse is when you navigator.pop()
+    //.then is also where you receive data that was popped back to this screen
   }
   //navigator method to push to the MealDetailView
 

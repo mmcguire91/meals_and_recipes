@@ -36,9 +36,9 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
       _loadedInitData = true;
       //this variable is the foundation of this (not all) didChangeDependencies function. Now that the user is returning to this screen we are changing the value of this variable to true as in the user has viewed this page before
     }
-    //if the user is seeing this view for the first time we run this function to display the appropriate meals
     super.didChangeDependencies();
   }
+  //if the user is seeing this view for the first time we run this function to display the appropriate meals
 
   void _removeMeal(String mealID) {
     setState(() {
