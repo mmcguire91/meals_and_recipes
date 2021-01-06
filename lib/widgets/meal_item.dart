@@ -5,14 +5,15 @@ import '../views/meal_detail_view.dart';
 
 //Class Meal holds the UI element and properties for each meal displayed on the category_meals_view
 
-class Meal extends StatelessWidget {
-  Meal({
+class MealItem extends StatelessWidget {
+  MealItem({
     @required this.id,
     @required this.title,
     @required this.imageUrl,
     @required this.duration,
     @required this.complexity,
     @required this.cost,
+    @required this.removeItem,
   });
 
   final String id;
@@ -21,6 +22,7 @@ class Meal extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Cost cost;
+  final Function removeItem;
 
   String get complexityText {
     switch (complexity) {
@@ -57,9 +59,19 @@ class Meal extends StatelessWidget {
 //interpolating enums into string values
 
   void selectMeal(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(
+    Navigator.of(ctx)
+        .pushNamed(
       MealDetailView.routeName,
       arguments: id,
+    )
+        .then(
+      (result) {
+        if (result != null) {
+          removeItem(result);
+        }
+      },
+      //.then executes a function when you do the inverse of the defined navigator function
+      //i.e. you performed a navigator.push here so the inverse is when you navigator.pop()
     );
   }
   //navigator method to push to the MealDetailView

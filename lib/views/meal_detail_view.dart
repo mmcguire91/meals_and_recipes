@@ -165,6 +165,15 @@ class MealDetailView extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.delete,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          Navigator.of(context).pop(mealID);
+        },
+      ),
     );
   }
 }

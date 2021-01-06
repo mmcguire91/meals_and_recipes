@@ -1,27 +1,54 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/meal.dart';
+import '../widgets/meal_item.dart';
 import '../models/dummy_data.dart';
+import '../models/meal_data_model.dart';
 
-class CategoryMealsView extends StatelessWidget {
+class CategoryMealsView extends StatefulWidget {
   static const routeName = '/category-meals';
-  //etablishes naming convention so that you can more easily reference the route
+
+  @override
+  _CategoryMealsViewState createState() => _CategoryMealsViewState();
+}
+
+class _CategoryMealsViewState extends State<CategoryMealsView> {
+  String categoryTitle;
+  List<Meal> displayedMeals;
+  bool _loadedInitData = false;
+  //variable to establish if it is the first time that the user is viewing the screen or if the user is returning to the screen via navigator.pop
+
+  @override
+  void didChangeDependencies() {
+    if (_loadedInitData == false) {
+      final routeArguments =
+          ModalRoute.of(context).settings.arguments as Map<String, String>;
+
+      categoryTitle = routeArguments['title'];
+
+      final categoryID = routeArguments['id'];
+      //establish route arguments to pass data over from one view to another via named routes
+
+      displayedMeals = DUMMY_MEALS.where((meal) {
+        return meal.categories.contains(categoryID);
+      }).toList();
+      //logic to display which meals map to which particular category when a category is pressed
+
+      _loadedInitData = true;
+      //this variable is the foundation of this (not all) didChangeDependencies function. Now that the user is returning to this screen we are changing the value of this variable to true as in the user has viewed this page before
+    }
+    //if the user is seeing this view for the first time we run this function to display the appropriate meals
+    super.didChangeDependencies();
+  }
+
+  void _removeMeal(String mealID) {
+    setState(() {
+      displayedMeals.removeWhere((meal) => meal.id == mealID);
+    });
+  }
+  //remove meal function will remove a meal (displayedMeals) from the category_meals_view display where the id of the meal == the mealID that was just deleted from the floating action button in the meal_detail_view
 
   @override
   Widget build(BuildContext context) {
-    final routeArguments =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-
-    final categoryTitle = routeArguments['title'];
-
-    final categoryID = routeArguments['id'];
-    //establish route arguments to pass data over from one view to another via named routes
-
-    final categoryMeals = DUMMY_MEALS.where((meal) {
-      return meal.categories.contains(categoryID);
-    }).toList();
-    //logic to display which meals map to which particular category when a category is pressed
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,16 +58,17 @@ class CategoryMealsView extends StatelessWidget {
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
-          return Meal(
-            id: categoryMeals[index].id,
-            title: categoryMeals[index].title,
-            imageUrl: categoryMeals[index].imageUrl,
-            duration: categoryMeals[index].duration,
-            complexity: categoryMeals[index].complexity,
-            cost: categoryMeals[index].cost,
+          return MealItem(
+            id: displayedMeals[index].id,
+            title: displayedMeals[index].title,
+            imageUrl: displayedMeals[index].imageUrl,
+            duration: displayedMeals[index].duration,
+            complexity: displayedMeals[index].complexity,
+            cost: displayedMeals[index].cost,
+            removeItem: _removeMeal,
           ); //return and display the Meal widget according to the specified properties
         },
-        itemCount: categoryMeals.length,
+        itemCount: displayedMeals.length,
       ),
     );
   }
