@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/meal_item.dart';
-import '../models/dummy_data.dart';
 import '../models/meal_data_model.dart';
 
 class CategoryMealsView extends StatefulWidget {
   static const routeName = '/category-meals';
+
+  CategoryMealsView(this.availableMeals);
+
+  final List<Meal> availableMeals;
+//display the applicable meals according to the user selected filters
+//data is passed over from main.dart via _availableMeals
 
   @override
   _CategoryMealsViewState createState() => _CategoryMealsViewState();
@@ -28,10 +33,11 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
       final categoryID = routeArguments['id'];
       //establish route arguments to pass data over from one view to another via named routes
 
-      displayedMeals = DUMMY_MEALS.where((meal) {
+      displayedMeals = widget.availableMeals.where((meal) {
         return meal.categories.contains(categoryID);
       }).toList();
       //logic to display which meals map to which particular category when a category is pressed
+      //widget.availableMeals also accounts for the user selected filters
 
       _loadedInitData = true;
       //this variable is the foundation of this (not all) didChangeDependencies function. Now that the user is returning to this screen we are changing the value of this variable to true as in the user has viewed this page before
