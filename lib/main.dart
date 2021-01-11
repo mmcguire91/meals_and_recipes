@@ -9,6 +9,8 @@ import 'views/category_meals_view.dart';
 import 'views/meal_detail_view.dart';
 import 'views/filters_view.dart';
 
+//RESUME LESSON AT 9:26
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -26,6 +28,8 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> _availableMeals = DUMMY_MEALS;
+  List<Meal> _favoriteMeals = [];
+  //stores the list of favorited meals
 
   void _setFilters(Map<String, bool> _filterData) {
     setState(() {
@@ -61,6 +65,29 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _toggleFavorite(String mealID) {
+    //retrieve the ID of the meal which we are targeting
+    final existingIndex =
+        _favoriteMeals.indexWhere((meal) => meal.id == mealID);
+    //checks if the particular element (mealID) is part of the list and gives us the index if it is part of the list
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoriteMeals.removeAt(existingIndex);
+      });
+      //if I'm attempting to press the toggle favorite button on a meal that is already part of the favorites list then I want to remove that element (mealID)
+      //if the meal is already part of the list then remove it becuase it is a toggle method
+      //if the index is greater than -1 then I know that it is already part of the list and it should remove that meal
+    } else {
+      setState(() {
+        _favoriteMeals.add(
+          DUMMY_MEALS.firstWhere((meal) => meal.id == mealID),
+        );
+      });
+      //if I did not find the element in the list then I want to add the particular element (mealID) to the favorites list
+    }
+  }
+  //by establishing the method in this way we are asking the entire build method to re-run itself
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -85,9 +112,10 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       //default is '/'. this is most relevantif you want to start at a different view other than home
       routes: {
-        '/': (ctx) => TabsView(),
+        '/': (ctx) => TabsView(_favoriteMeals),
         // '/' acts as home. If you are going to establish home under routes you must not define a property for home or comment it out
         // the initial view is defined as the tabs view but shows the CategoriesView. This is because of the logic defined within the DefaultTabController widget
+        // passing over the list of favorite meals to TabsView in order to pass over to FavoritesView (which is accessed via TabsView)
         CategoryMealsView.routeName: (ctx) =>
             CategoryMealsView(_availableMeals),
         //updated naming convention path to reduce the chance of human error by mistyping a string

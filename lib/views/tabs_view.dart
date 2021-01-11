@@ -5,31 +5,46 @@ import './categories_view.dart';
 
 import '../widgets/hamburger_menu.dart';
 
+import '../models/meal_data_model.dart';
+
 //TabsView is the tab controller on the appbar
 
 class TabsView extends StatefulWidget {
+  TabsView(this.favoriteMeals);
+
+  final List<Meal> favoriteMeals;
+  //receive list of favoriteMeals from main.dart
+
   @override
   _TabsViewState createState() => _TabsViewState();
 }
 //electing to define statefulWidget because we want the page to update based on user interaction
 
 class _TabsViewState extends State<TabsView> {
-  final List<Map<String, Object>> _pages = [
-    {
-      'page': CategoriesView(),
-      'title': 'Categories',
-    }, //index = 0
-    {
-      'page': Favorites(),
-      'title': 'Favorites',
-    }, //index = 1
-  ];
-  //assign a widget to the index the user selects within a new List variable _pages which holds Map values of <String, Object> data types as indeces
-  //ensure that the values defined here are tied to the order they appear in the items List of the BottomNavigationBar widget
+  List<Map<String, Object>> _pages;
 
   int _selectedPageIndex = 0;
   //the initial value of the index tied to which page the user will view
   //_selectedPageIndex = 0 --> 0 index value is tied to CategoriesView() which is defined in the items List of the BottomNavigationBar widget
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesView(),
+        'title': 'Categories',
+      }, //index = 0
+      {
+        'page': Favorites(widget.favoriteMeals),
+        'title': 'Favorites',
+      }, //index = 1
+    ];
+    //assign a widget to the index the user selects within a new List variable _pages which holds Map values of <String, Object> data types as indeces
+    //ensure that the values defined here are tied to the order they appear in the items List of the BottomNavigationBar widget
+    super.initState();
+  }
+//we had to move the _pages list into init state due to calling the widget property in Favorites(widget.favoriteMeals).
+//widget is not accessible outside of the Build or init state methods
 
   void _selectPage(int index) {
     setState(() {
