@@ -88,6 +88,12 @@ class _MyAppState extends State<MyApp> {
   }
   //by establishing the method in this way we are asking the entire build method to re-run itself
 
+  bool _isMealFavorite(String id) {
+    return _favoriteMeals.any((meal) => meal.id == id);
+  }
+  //Query if the meal id (of the particular meal) that I'm currently on is equal to the id established in this method
+  //If yes, return true. If no, return false
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -119,7 +125,9 @@ class _MyAppState extends State<MyApp> {
         CategoryMealsView.routeName: (ctx) =>
             CategoryMealsView(_availableMeals),
         //updated naming convention path to reduce the chance of human error by mistyping a string
-        MealDetailView.routeName: (ctx) => MealDetailView(),
+        MealDetailView.routeName: (ctx) =>
+            MealDetailView(_toggleFavorite, _isMealFavorite),
+        //pass over the logic for toggling favorite and logic to display if a meal is currently identified as a favorite (for which we'll use to populate the star/favorite button)
         FiltersView.routeName: (ctx) => FiltersView(_filters, _setFilters),
       },
       onUnknownRoute: (settings) {

@@ -5,7 +5,13 @@ import '../models/dummy_data.dart';
 //MealDetailView is the UI for the Meal Detail page
 
 class MealDetailView extends StatelessWidget {
+  MealDetailView(this.toggleFavorite, this.isFavorite);
+
   static const routeName = '/meal-detail';
+
+  final Function toggleFavorite; //accept _toggleFavorite from main.dart
+
+  final Function isFavorite;
 
   Widget sectionTitle(BuildContext context, String text) {
     return Container(
@@ -167,13 +173,15 @@ class MealDetailView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
-          Icons.delete,
+          isFavorite(mealID) ? Icons.star : Icons.star_border,
           color: Colors.white,
+          //determine if the current mealID meets the logic defined in the isFavorite method
+          //If true / yes, star should populate. If false / no, star should not populate
+          // color: Colors.white,
         ),
-        onPressed: () {
-          Navigator.of(context).pop(mealID);
-        },
+        onPressed: () => toggleFavorite(mealID),
       ),
+      //Favorite button => pressing this button will activate the toggleFavorite method passed over from _toggleFavorite established logic in main.dart
     );
   }
 }

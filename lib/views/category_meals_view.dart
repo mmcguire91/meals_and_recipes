@@ -71,7 +71,7 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
             duration: displayedMeals[index].duration,
             complexity: displayedMeals[index].complexity,
             cost: displayedMeals[index].cost,
-            removeItem: _removeMeal,
+            // removeItem: _removeMeal,
           ); //return and display the Meal widget according to the specified properties
         },
         itemCount: displayedMeals.length,
