@@ -9,8 +9,6 @@ import 'views/category_meals_view.dart';
 import 'views/meal_detail_view.dart';
 import 'views/filters_view.dart';
 
-//RESUME LESSON AT 9:26
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
